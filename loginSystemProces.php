@@ -18,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $admin_num = $Admin_rs->num_rows;
 
         if ($admin_num > 0) {
-            $_SESSION["SystemLoginMessage"] =  "";
-            header("Location: system.php");
+            $_SESSION["SystemLoginMessage"] =  "Done";
+            header("Location: SystemDashboard.php");
         } else {
             $_SESSION["SystemLoginMessage"] =  "Invalid Login Details. Please try again Later";
             header("Location: system.php");

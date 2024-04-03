@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: contactUs.php");
     } else {
         Database::iud("INSERT INTO `patient` (`Email`,`Name`,`Mobile`,`Address`) VALUES ('" . $email . "','" . $name . "','" . $mobile . "','" . $address . "') ");
-        $_SESSION["InsertMessage"] = "Your Data Inserted in our Database. Thank You";
+        $_SESSION["InsertMessage"] = "Your Data Inserted in our Database. Our Customer sevice Deparment Agent will contact you Thank You. ";
         header("Location: contactUs.php");
     }
 }
