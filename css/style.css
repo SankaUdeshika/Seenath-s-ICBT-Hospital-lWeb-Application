@@ -64,8 +64,7 @@ header nav ul li a:hover {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background-image:
-   linear-gradient(
+  background-image: linear-gradient(
       to bottom right,
       rgba(65, 61, 61, 0.6),
       rgba(27, 25, 25, 0.6)
@@ -468,4 +467,20 @@ li {
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
+}
+
+.SystemLoginBtn {
+  background-color: darkblue;
+  color: white;
+  border-radius: 50px;
+  font-size: x-large;
+  border: 0px solid transparent;
+  transition: 0.2s ease-in-out;
+}
+
+.SystemLoginBtn:hover {
+  background-color: red;
+  color: white;
+  border-radius: 50px;
+  font-size: x-large;
 }
