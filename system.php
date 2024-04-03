@@ -43,14 +43,7 @@
         background-color: black;
       ">
         <div style="width: 600px;">
-            <?php
-            session_start();
-            if (isset($_SESSION["SystemLoginMessage"])) {
-            ?>
-                <span style="color: greenyellow;"><?php echo ($_SESSION["SystemLoginMessage"]) ?></span>
-            <?php
-            }
-            ?>
+
             <form action="loginSystemProces.php" method="post">
                 <div class="adminEmail">
                     <input type="text" id="email" name="email" style="background-color: transparent; border: 1px solid gray; width: 100%; font-size: xx-large; color: white; border-radius: 10px;" placeholder="Please Enter  Email Address">
@@ -59,11 +52,21 @@
                 <div class="Password">
                     <input type="password" id="password" name="password" style="background-color: transparent; border: 1px solid gray; width: 100%; font-size: xx-large; color: white; border-radius: 10px;" placeholder="Please Enter Your Password">
                 </div>
-
+                <?php
+                session_start();
+                if (isset($_SESSION["SystemLoginMessage"])) {
+                ?>
+                    <div style="display: flex; justify-content: end;">
+                        <span style="color: greenyellow;"><?php echo ($_SESSION["SystemLoginMessage"]) ?></span>
+                    </div>
+                <?php
+                }
+                ?>
                 <div style="margin-top: 20px; display: flex; justify-content: center">
                     <button class="SystemLoginBtn">Login</button>
                 </div>
             </form>
+
 
         </div>
 </body>
