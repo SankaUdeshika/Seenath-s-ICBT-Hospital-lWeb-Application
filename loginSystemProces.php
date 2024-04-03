@@ -6,21 +6,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $email = $_POST["email"];
 
-    if (empty($name)) {
-        $_SESSION["InsertMessage"] = "Please Enter Your Name";
-        header("Location: contactUs.php");
-    } else if (empty($email)) {
-        $_SESSION["InsertMessage"] =  "Please Enter Your Email";
-        header("Location: contactUs.php");
-    } else if (empty($mobile)) {
-        $_SESSION["InsertMessage"] = "Please Enter Your mobile";
-        header("Location: contactUs.php");
-    } else if ($mobileLenth != 10) {
-        $_SESSION["InsertMessage"] =  "Please Enter a Valid Mobile Number";
-        header("Location: contactUs.php");
+    if (empty($email)) {
+        $_SESSION["SystemLoginMessage"] = "Please Enter Your Email";
+        header("Location: system.php");
+    } else if (empty($password)) {
+        $_SESSION["SystemLoginMessage"] =  "Please Enter Your Password";
+        header("Location: system.php");
     } else {
-        Database::iud("INSERT INTO `patient` (`Email`,`Name`,`Mobile`,`Address`) VALUES ('" . $email . "','" . $name . "','" . $mobile . "','" . $address . "') ");
-        $_SESSION["InsertMessage"] = "Your Data Inserted in our Database. Thank You";
-        header("Location: contactUs.php");
+
+        $Admin_rs  =    Database::search("SELECT * FROM `admin` WHERE `adminEmail` = '" . $email . "' AND `password` = '" . $password . "'");
+        $admin_num = $Admin_rs->num_rows;
+
+        if ($admin_num > 0) {
+            $_SESSION["SystemLoginMessage"] =  "";
+            header("Location: system.php");
+        } else {
+            $_SESSION["SystemLoginMessage"] =  "Invalid Login Details. Please try again Later";
+            header("Location: system.php");
+        }
     }
 }
